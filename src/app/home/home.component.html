@@ -1,0 +1,85 @@
+<div style="background-color: aqua;" *ngIf="success_msg;then update_msg; else error_msg">
+    <h2>User Added succesfully</h2>
+</div>
+
+<ng-template #update_msg>
+    <h2 style="background-color:saddlebrown;" >User was updated</h2>
+</ng-template>
+
+<ng-template #error_msg>
+    <h2 style="background-color: red;" >User was not added</h2>
+</ng-template>
+<h1>Learning *ngFor</h1>
+<ul>
+<li *ngFor="let user of user_list; index as i ; first as f; last as l; even as e;odd as o">
+   <div style="background-color: salmon;" *ngIf="f">
+    {{i}} {{user.name}} {{user.class}} {{user.address}}
+   </div>
+
+   <div style="background-color:aqua;" *ngIf="e; else odd">
+    {{i}} {{user.name}} {{user.class}} {{user.address}}
+   </div>
+   <ng-template #odd>
+    <div style="background-color:burlywood">
+    {{i}} {{user.name}} {{user.class}} {{user.address}}
+    </div>
+   </ng-template>
+</li>
+</ul>
+
+   <h1>Learnng *ng Switch</h1>
+   <div [ngSwitch]="category">
+       <div *ngSwitchCase="'tshirt'">I am displaying tshirt</div>
+       <div *ngSwitchCase="">I am displaying shirt</div>   
+       <div *ngSwitchCaseDefault></div>     
+   </div>
+
+   <h1>Learnng ngStyle</h1>
+
+   <div [ngStyle]="{'background-color':'green','color':'white'}">Hi I am green using ngStyle</div>
+   <div [ngStyle]="{'background-color':bgcolor,'color':txtcolor}">I am changing color dynamically</div>
+
+   <h1>Learning ngClass</h1>
+   <div [ngClass]="'c1 c2'"> Hi I am like this only</div>
+   <div [ngClass]="getClass()"> My color will be decided by method</div>
+   <div [ngClass]="{c1:false,c3:true}">Hi I am Chor</div>
+
+   <h2 [ngStyle]="{'margin-top':'20px','text-align':'center'}">Data Binding</h2>
+   <h2 [ngStyle]="{'margin-top':'20px','color':'red'}" > Interpolation </h2>
+   <div>
+       <h2>Book Name = {{bookName}}</h2>
+       <h2>Pages = {{pages}}</h2>
+       <h2>Author = {{about.writer}}</h2>
+   </div>
+   <div *ngFor="let user of user_list">
+       <p>{{user.name}}  {{user.class}}  {{user.address}}</p>
+   </div>
+   <h2 [ngStyle]="{'margin-top':'20px','color':'red'}"> Property Binding </h2>
+        <div [innerHTML]="bookName"></div>
+    
+    <h2>{{say}}</h2>
+
+   <button (click)="sayHello()">Say Hello</button>
+
+   <h2 [ngStyle]="{'margin-top':'20px','text-align':'center'}">Angular Pipes</h2>
+   
+   <div>
+       {{ 'AshvinSrivastava' | lowercase }}
+   </div>
+
+   <div>
+       {{ 'AshvinSrivastava' | uppercase }}
+   </div>
+
+   <div>
+             {{ 0.678 | percent }}
+   </div>
+
+   <div>
+             {{ 678 | currency: 'INR' }}
+   </div>
+
+   <div>
+       <h1>I am adding contact Once More</h1>
+
+   </div>

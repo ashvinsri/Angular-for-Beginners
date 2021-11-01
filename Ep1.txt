@@ -1,0 +1,72 @@
+Angular is a modular-based architecture
+    -There are lot of built in modules
+    -All the codes and functionalities are wrapped in modules.
+
+@ symbol brfore anythin is decorator
+
+Module consistes of:-
+    -Declaration
+        -All components relies There
+    - Imports
+        - We can import module inside module
+    - Providers
+        -Services that we need will be injected here 
+    - Bootstrap
+        -first component module should use
+    - export
+        -used to export coponent outside the module
+
+Every angular application should have at least 1 module 
+
+Ex.
+    Contacts 
+    Users
+    Leads
+    Opportunities
+    Settings
+    Profile
+    Authentications
+
+Free Users
+    Contacts 
+    Users
+Premium Users
+    Leads
+    Opportunities
+    Settings
+    Profile
+
+You can turn on or off modules as per requirement
+
+Components
+
+Components are the most important and basic building blocks of angular apps
+
+Authentication Module:-
+    -new-Users
+    -login
+    -forgot-password
+    -reset-password
+Components are the smallest functionality that you will implement in your application
+It can have parent child relationship
+
+
+Let's create some custom components.
+
+-contact
+    ng g component add-contact
+    ng g component edit-contact
+    ng g component list-contact
+    ng g component view-contact
+
+add-contact
+    add-contact.html  ---> view html or template file
+    add-contact.ts --> It is a class file contains logic
+    add-contact.spec. --> It is having unit tests 
+    add-contact.css --> styling 
+
+component.ts file has
+
+    selector--> unique identifier for the component(how will u refer to this component) 
+    templateURL--> your html code
+    styleURLs --> for linking component stylesheet

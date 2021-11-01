@@ -1,0 +1,72 @@
+Component Life Cycles
+
+  --ngOnChanges()
+        Used in pretty much any component that has an input
+        Called whenever an input value changed
+        Is called the first time before ngonInit
+
+  --ngOnInit()
+        Used to initialize data in a component
+        Called after input values are set when a component is initialized
+        Added to every component by default by angular CLI
+        called only once
+  --ngDoChecks()
+        Called during all change detection runs
+        A run through the view by Angular to update/detect ngOnChanges
+
+  --ngAfterContentInit()
+        Called after first ngDoChecks()
+        Called after first run through initialization
+        
+  
+  --ngAfterContentCHecked()
+        called after every ngDoCheck()
+        Waits till after ngAfterContentInit() on first runthrough 
+  
+  --ngAfterViewInit()
+        Called after angular initializes component and child component ngAfterContentCHecked
+        Called only once after view is intialized
+
+  --ngAfterViewChecked()
+        Called after all content is initialized
+        First call is after ngAfterViewInit()
+        called after every ngAfterContentChecked()
+ 
+  --ngAfterDestroy()
+        Used as finalize in gc
+        clean up code
+
+By default we have ngOnInit()
+Steps to use lifecycle hook
+    1. Import it in class
+    2. Extend the implements interface
+    3. Implement the method
+
+Communication between related Components
+
+        Contacts  --> module
+            contact-listing --> parent Component
+                contact-grid --> child component
+                contact-tool --> child component 
+                    download-pdf --> sub-child component
+                    download-excel --> sub child component
+
+
+Example:
+            Leads
+                leads-listing  
+                    leads-grid
+                    leads-tools
+                        download-excel
+                        download-pdf
+
+Communication between totally unrelated Components
+    Component1 --> Services <--- Component2
+
+    Services  -- is a common reusable piece of functionality shared between different components
+
+
+
+
+
+

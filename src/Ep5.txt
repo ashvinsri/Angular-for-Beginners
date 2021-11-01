@@ -1,0 +1,207 @@
+------------------Angular Pipes-----------------------------------
+
+    Pipes are used to transform the data.
+    It takes data as an input and returns some formatted output
+    We can use more than one pipes on one element
+    Syntax is:-
+        <div> {{ 'Ashvin Srivastava' | lowercase }} </div>
+    
+    Built - in Pipes
+
+        These are available in template files
+            * lowercase
+            * uppercase
+            * datetime
+            * currency
+
+    Parametrized Pipes:
+
+        In parametized pipes we pass parameters along with pipes
+        Use ( : ) after pipes
+
+        <div> {{345.78 | currency: 'INR'}}
+    
+    Chaining Pipes:
+
+        We can use multiple pipes
+
+        <div> {{ 'Ashvin Srivastava' | lowercase | uppercase}} </div>
+
+-------------------Angular Routers-----------------------------------
+
+- Routing is a mechanism used by Angular Framework to manage the "paths" and 
+"routes" of our angular application
+- Routing strategy helps in navigation between various views in our angular
+applications
+- Router is a singleton - which means ONLY one instance of router in our angular application
+- Angular Router is the official Router module which is written and maintained by core angular team
+- Router module is found in package @ angular/router
+
+- We need to setup router array[] every time a request is made , the router
+  will search in the list of array and find the most relevant match
+
+    * Routes for components
+        http://myapplication
+        http://myapplication/profile
+        http://myapplication/user
+    
+    * Getting Query Params from routes
+
+        http://myapplication/user/serch?user=abc
+
+
+    * Getting URL segments
+
+        http://myapplication/user/10/category/pending
+
+    * Loading Child Routes for a module
+        http://myapplication/user/add/10
+        http://myapplication/user/delete/10
+    
+    * Lazy Loading
+    
+    * Handling WIld Card Routers
+
+    * Handling 404
+
+        http://myapplication/user.pageNotFound
+
+--------------------- Router Outlet's ------------------------------------
+
+ - The router outlet is a directive that's available from the router library 
+   where the Router inserts the component that gets matched based on the current browser's 
+   URL
+ - You can add multiple outlet in your angular application which enables you to implement 
+   advanced routing scenario.
+ 
+ - By default there is one router outlet defined - in app.component.html
+
+    Router will match the matching routes for the components.
+        -> takes its output
+            -> inside inside the router-outlet tag 
+               router outlet tag is present by default in app component.html
+               <router-outlet></router-outlet>
+
+ - Multiple Router Outlet
+    If we don't provide any name for router-outlet it becomes primary.
+    There should be only 1 primary. 
+    We can define multiple router outlets by giving name to them.
+    <router-outlet name="route1"></router-outlet>
+    In routing if u dont define outlet by default it is primary
+
+    -------------------(not used much)-------------------------------
+
+------------------ Router Strategy --------------------------------------
+    Its the routing behaviour of application urls 
+        -Path Location Strategy
+            -Default routing strategyfor ANgular applications
+            -HTML 5 push state URL
+                http://myapp.com/dashboard
+                http://myapp.com/users/10
+                http://myapp.com/users/10/photos
+
+            -HashLocationStrategy
+
+                http://myapp.com/#/dashboard
+                http://myapp.com/#/users/10
+                http://myapp.com/#/users/10/photos
+
+                -appmodule.ts
+                import {LocationStrategy} from @angular/common
+                change providers array[]
+    
+    -Why do we need 2 strategy?
+                actually when we deploy our app on cloud platform
+                then sometime cloud confuses url path with folder path
+                 /contact/add-contact ------> folder
+                 #/contact/add-contact ----->url
+
+    Which to use?
+                Path location strategy is recommended
+                There is no difference at all just to solve some deployment issue
+
+---------------------------- Base href ------------------------------
+Base href is present in index.html which mean which page to open
+
+---------------------------- Configuring Routes --------------------
+We can configure routes to redirect routes for various path.
+    * Path
+        // done already
+    * Component
+        // component Class
+    * redirectTo
+        // rediect to some other path
+    * Children
+          const routes:Routes ={
+            path:'contacts',
+            children:[
+                    {
+                        path:'add-contact', component: AddContactComponent
+                    }
+                    ]
+                    },
+    * Outlet
+    * pathMatch
+
+----------------------------- Parametrized Routes -------------------
+    We can configure and send parameters to our routes
+    We need to configure the route and mention that the value is dynamic
+    suppose we want to pass some dynamic value along with url
+
+    http://myapp.com/edit-contact/10
+    http://myapp.com/edit-contact/10/token/20
+
+    Put (:) for dynamic variables
+
+    path:'edit-contacts/:contactId/token/:tokenId',
+
+    then go to appcomponent.ts file and recive the coming parameters 
+    in the constructor using activated routes
+
+----------------------------- Router Links ---------------------------
+When applied to an element in a template makes the element a link that initiates
+navigation to a route
+Navigation opens one or more routed components in one or more router outlet
+<a [routerLink]="['/edit-contacts',client.id,'token',10]">Edit</a>
+
+--------------------- Router Redirect ---------------------------------
+
+    - By default root level route is ''
+    - redirectTo speify which route it has to go.
+    {
+        path:'',
+        redirectTo:'home',
+        pathMatch:'full'
+    }
+    When you will load website it will by default take u to home.
+
+--------------------- Query Params ----------------------------------
+
+    -We can send data from forms or click Events
+    -http://localhost.com/search?key=101&state=ka
+    - Mostly used for querying,searching or filtering data
+
+-------------------- Wild Card Routes --------------------------------
+
+    Any unmatched route will be intercepted by wild card route
+    This has to be the last route in your configuration
+    {
+        path:'**',
+        component:PageNotFound
+    }
+
+------------------- Lazy Loading ---------------------------------
+
+By default angular loads all modules whether necessary or not
+    -makes our application slow performance wise.
+    -also its bad idea to expose modules which user is not going to use
+    -user should not see /use
+
+Lazy Loading comes into Picture
+    - Initially we will load those modules which are mandatory
+    - Rest we will serve as requested
+
+Let's make a module using angular CLI 
+    ng g module payment --route payment --module app.module
+
+

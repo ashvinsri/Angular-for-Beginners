@@ -1,0 +1,68 @@
+
+----------------------------- Data Binding -------------------------------------
+
+Means to bind the data from view (Template) to Controller (Component Class)
+Data binding as the name suggests interacting with data
+Defines how data flows and how the data gets updated based on some business logic
+
+Data is spread throughout all the 4 components file
+
+Data transfer can be from template to component or from Component to Template
+----------One Way Data binding
+        -From component to template(view)
+            1- Interpolation
+                is a technique that allows the user to bind data from component to view
+                can be used for integer,string,objects,arrays
+                {{ variable_name }}
+                   <h2>Book Name = {{bookName}}</h2>   String 
+                   <h2>Pages = {{pages}}</h2>     Integer
+                   <h2>Author = {{about.writer}}</h2> Object
+            
+            2- Property Binding
+                is a technique that allows the user to bind properties of elements from Component to View 
+                [property] = " "
+                <div [innerHTML]="bookName"></div>
+
+            3- Attribute Binding
+                is a technique that allows us to bind attributes of elements from component to view(template)
+                functionality is almost similar to property binding.
+                Difference
+
+                    [ngClass]="expression"  // property binding
+                    [attr.className] = "c1"
+                    some attributes are not natively supported for elements
+                    -> [colspan]="colVal"  //error_msg
+                    -> [attr.colspan]="colVal" //correct
+                
+                angular prefers property binding
+
+                  or
+        -From template to component
+            -Event binding
+                is a technique allows the user to bind the events of element from view/template to component
+                can be used for all available event
+                <button (event_name) = "function()"> Click Me </button> 
+                        event is nothing but javascript event
+                            -> onclick
+                            ->onmousehover
+                            ->onfocus
+                            ->onblur
+                    * do not write "on" before event
+                    <button (click)="method()">Click</button>
+                
+
+
+
+
+
+----------Two Way Binding
+        -Data flows from View to Component and Component to View
+           Data from Template --> Component -->Template
+        -Two Way data binding is the combination of 
+            -> Alternative of writing ngModel
+            -> Property Binding and Event Binding
+            
+            <input [value]="data1" (input)="$event.target.value" />
+
+
+

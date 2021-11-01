@@ -1,0 +1,62 @@
+
+
+         Templates in Angular Components ( .html)
+
+Template is nothing but an HTML file present in your component folder.
+Templates are related in .ts file using templateURL
+
+If you see any component.ts file then you will see the selector
+
+      -selector -> "app-leads-listing"
+      -unique identifier to identify this component
+      - we call it like this <app-leads-listing>
+
+styleURLs =[]
+    --> it can have more than one url.
+
+--Angular Directive
+      Angular Directives are used to extend the power of the HTML by giving it new syntax
+      --Component Directive
+            Every angular application must have at least 1 component 
+            Have its own Templates
+            Events attached
+      --Structural Directives
+            Updates Structure
+            ngFor,nglf,ngSwitch
+      --Attribute Directives
+            ngStyle,ngClass
+      
+      -------------Structural Directive----------------------------
+
+Structural Directives are responsible for HTML layout. They shape or reshape DOM's structure by adding removing or manipulating elements
+
+As with other directive we apply structural directive to host elements.
+The directive then does whatever it supposed to do.
+
+An (*) preceeds the directive attribute
+
+----*ngIf - condition will evaluate the expression and result in true or false
+                  ||  && !
+
+            <div *ngIf="success_msg; then update_msg; else error_msg">
+
+            </div>
+
+            //// whre success_msg and update_msg are variables
+
+-----*ngFor - similar to for statement in other programming languages
+       Syntax:
+            <div *ngFor="let ele of collection:></div>
+            index - gets current index of the current element in iterations
+            first - returns true if the current element is the first element 
+            last - returns true if the current element is the last element 
+            even - returns true if the current element is the even element 
+            odd - returns true if the current element is the odd element 
+
+
+
+ngSwitch
+
+
+
+
